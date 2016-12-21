@@ -134,7 +134,7 @@ after_initialize do
             # replace $2y$ with $2a$ see http://stackoverflow.com/a/20981781
             crypted_pass.gsub! /^\$2y\$/, '$2a$'
             begin
-              BCrypt::Password.new(crypted_pass) == Digest::MD5.hexdigest(password)
+              BCrypt::Password.new(crypted_pass) == password
             rescue
               false
             end
